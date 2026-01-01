@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026</title>
+    <style>
+        body { margin: 0; background: #000; color: gold; font-family: sans-serif; overflow: hidden; text-align: center; }
+        canvas { position: absolute; top: 0; left: 0; }
+        #ui { position: relative; z-index: 10; top: 20vh; padding: 20px; }
+        button { padding: 15px 30px; font-size: 20px; cursor: pointer; background: gold; border: none; border-radius: 50px; font-weight: bold; }
+        h1 { font-size: 3.5rem; text-shadow: 0 0 20px red; }
+        .theme { font-size: 1.5rem; color: white; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <canvas id="fw"></canvas>
+    <div id="ui">
+        <h1>Happy New Year 2026! 🎆</h1>
+        <div class="theme">
+            <p>Theme: <strong>"Unstoppable Excellence"</strong></p>
+            <p>✨ Health | ✨ Wealth | ✨ Happiness</p>
+        </div>
+        <br>
+        <button onclick="start()">CLICK TO CELEBRATE 🎶</button>
+        <audio id="song" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('fw');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        function start() {
+            document.getElementById('song').play();
+            animate();
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Random sparks
+            ctx.fillStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            ctx.beginPath();
+            ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 3, 0, Math.PI * 2);
+            ctx.fill();
+            
+            requestAnimationFrame(animate);
+        }
+    </script>
+</body>
+</html>
